@@ -5,7 +5,7 @@ USE employment_DB;
 
 CREATE TABLE department(
     id INT PRIMARY KEY,
-    name VARCHAR(30) UNIQUE NOT NULL,
+    name VARCHAR(30) UNIQUE NOT NULL
 );
 
 CREATE TABLE roles(
@@ -21,7 +21,7 @@ CREATE TABLE employees(
     first_name VARCHAR(30) UNIQUE NOT NULL,
     last_name VARCHAR(30) UNIQUE NOT NULL,
     role_id INT UNIQUE NOT NULL,
-    manager_id INT UNIQUE NULL,
+    manager_id INT UNIQUE NULL
 
 );
 

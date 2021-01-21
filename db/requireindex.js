@@ -1,4 +1,3 @@
-var connection = require("./employmentDBConnection");
+// var connection = require("./employmentDBConnection");
 
 
-class dbConnection
