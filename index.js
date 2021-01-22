@@ -8,7 +8,7 @@ function start() {
     type: "list",
     name: "choice",
     message: "What would you like to do?",
-    choices: ["View departments" , "View roles", "View employees"]
+    choices: ["View departments" , "View roles", "View employees", "View employees by Department", "View employees by Manager","Add an Employee", "Remove an Employee", "Update Employee role", "Update Employee manager"],
 },
 ]).then(function(answer){
     console.log(answer);
@@ -27,7 +27,36 @@ function start() {
             console.log(results);
         });
     }
-    
+    if(answer.choice === "View employees by Department"){
+        connection.query("").then(function(results){
+            console.log(results);
+        });
+    }
+    if(answer.choice === "View employees by Manager"){
+        connection.query("").then(function(results){
+            console.log(results);
+        });
+    }
+    if(answer.choice === "Add an Employee"){
+        connection.query("").then(function(results){
+            console.log(results);
+        });
+    }
+    if(answer.choice === "Remove an Employee"){
+        connection.query("").then(function(results){
+            console.log(results);
+        });
+    }
+    if(answer.choice === "Update Employee role"){
+        connection.query("").then(function(results){
+            console.log(results);
+        });
+    }
+    if(answer.choice === "Update Employee manager"){
+        connection.query("").then(function(results){
+            console.log(results);
+        });
+    }
 })
 }
 start();
