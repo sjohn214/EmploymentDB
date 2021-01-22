@@ -27,13 +27,15 @@ CREATE TABLE employees(
 
 CREATE TABLE employee_departments(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL,
+    first_name VARCHAR(30)NOT NULL,
+    last_name VARCHAR(30)NOT NULL,
     department_id INT NOT NULL
 );
 
 CREATE TABLE employee_managers(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL,
+    first_name VARCHAR(30)NOT NULL,
+    last_name VARCHAR(30)NOT NULL,
     manager_id INT UNSIGNED
 );
 
@@ -52,4 +54,4 @@ UPDATE employees
 SET role_id = '' WHERE last_name = '' AND first_name = '';
 
 UPDATE employee_managers
-SET manager_id = '' WHERE name = '';
+SET manager_id = '' WHERE last_name = '' AND first_name = '';

@@ -8,10 +8,15 @@ function start() {
     type: "list",
     name: "choice",
     message: "What would you like to do?",
-    choices: ["View departments" , "View roles", "View employees", "View employees by Department", "View employees by Manager","Add an Employee", "Remove an Employee", "Update Employee role", "Update Employee manager"],
+    choices: ["View all Employee Data", "View departments" , "View roles", "View employees", "View employees by Department", "View employees by Manager","Add an Employee", "Remove an Employee", "Update Employee role", "Update Employee manager"],
 },
 ]).then(function(answer){
     console.log(answer);
+    if (answer.choice === "View all Employee Data"){
+        connection.query("").then(function(results){
+            console.log(results);
+        });
+    }
     if(answer.choice === "View departments"){
         connection.query("SELECT * FROM employment_DB.department").then(function(results){
             console.log(results);
