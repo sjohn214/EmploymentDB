@@ -1,9 +1,11 @@
 {
 	"folders": [
 		{
+			"name": "EmploymentDB",
 			"path": "."
 		},
 		{
+			"name": "Assets",
 			"path": "../../uncc-cha-fsf-pt-10-2020-u-c/12-MySQL/02-Homework/Assets"
 		}
 	],
