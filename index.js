@@ -28,32 +28,32 @@ function start() {
         });
     }
     if(answer.choice === "View employees by Department"){
-        connection.query("").then(function(results){
+        connection.query("SELECT * FROM employment_DB.employee_departments").then(function(results){
             console.log(results);
         });
     }
     if(answer.choice === "View employees by Manager"){
-        connection.query("").then(function(results){
+        connection.query("SELECT * FROM employment_DB.employee_managers").then(function(results){
             console.log(results);
         });
     }
     if(answer.choice === "Add an Employee"){
-        connection.query("").then(function(results){
+        connection.query("SELECT * FROM employment_DB.add_new_employees").then(function(results){
             console.log(results);
         });
     }
     if(answer.choice === "Remove an Employee"){
-        connection.query("").then(function(results){
+        connection.query("SELECT * FROM employment_DB.employees").then(function(results){
             console.log(results);
         });
     }
     if(answer.choice === "Update Employee role"){
-        connection.query("").then(function(results){
+        connection.query("SELECT * FROM employment_DB.employees").then(function(results){
             console.log(results);
         });
     }
     if(answer.choice === "Update Employee manager"){
-        connection.query("").then(function(results){
+        connection.query("SELECT * FROM employment_DB.employee_managers").then(function(results){
             console.log(results);
         });
     }
