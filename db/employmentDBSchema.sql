@@ -3,6 +3,22 @@ CREATE DATABASE employment_DB;
 
 USE employment_DB;
 
+CREATE TABLE all_employee_data (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30)NOT NULL,
+    -- //department name 
+    first_name VARCHAR(30)NOT NULL,
+    last_name VARCHAR(30)NOT NULL,
+    -- //employee's first and last names
+    title VARCHAR(30)NOT NULL,
+    -- //job title
+    salary DECIMAL(10,2)NOT NULL,
+     role_id INT NOT NULL,
+    --  //role id assigment by department
+    manager_id INT UNSIGNED
+    -- //manager assignment if any
+);
+
 CREATE TABLE department(
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(30)NOT NULL,
