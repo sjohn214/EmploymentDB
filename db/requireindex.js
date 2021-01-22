@@ -1,3 +1,3 @@
-// var connection = require("./employmentDBConnection");
+// var connection = require("./db/employmentDBConnection");
 
 
