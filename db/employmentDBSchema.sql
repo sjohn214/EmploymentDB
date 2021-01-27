@@ -65,5 +65,8 @@ UPDATE employees
 SET role_id = '' WHERE last_name = '' AND first_name = '' AND employee_id = ''
 AND title = '' AND department_id = '';
 
+INSERT INTO employees(last_name, first_name, employee_id, role_id, title, department_id)
+Values('', '', INT(), INT(), '', INT());
+
 UPDATE employee_managers
 SET manager_id = '' WHERE last_name = '' AND first_name = '';
