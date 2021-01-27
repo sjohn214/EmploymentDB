@@ -96,10 +96,46 @@ function start() {
         })
         inquirer.prompt([
             {   
-            type: "list",
-            name: "choice",
+            type: "input",
+            name: "newemployee",
             message: "Would you like to add a new Employee?",
             choices: ["Yes", "No"]   
+        },
+        {
+            type: "input",
+            name: "roleid",
+            message: "What is the Employee's role id?",
+            default: ["1", "2", "3", "4", "5"]  
+        },
+            {
+            type: "input",
+            name: "firstname",
+            message: "What is the Employee's first name?",
+                
+        },
+            {
+            type: "input",
+            name: "lastname",
+            message: "What is the Employee's last name?",
+            
+        },
+        {
+            type: "input",
+            name: "employeeid",
+            message: "What is the Employee's new id number? Use a number higher than 9.",
+        
+        },
+        {
+            type: "input",
+            name: "title",
+            message: "What is the Employee's title?",
+            default: ["Lead Engineer", "Software Engineer", "Sales Leader", "Salesperson", "Accountant", "Managing Attorney", "Lawyer", "HR Leader"]
+        },
+        {
+            type: "input",
+            name: "departmentid",
+            message: "What is the Employee's department id number?",
+            default: ["Sales 1", "Engineering 2", "Finance 3", "Legal 4", "Human Resources 5"]
         }
         
     ]);
