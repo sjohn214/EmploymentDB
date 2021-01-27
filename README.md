@@ -1,57 +1,46 @@
 # EmploymentDB
 To create an employee database with high functionality using Node and mySQL.
-# TakeNote
 
 # Project Description
-To create an application that can be used to write, save, and delete notes. This application uses a backend application called Express that allows for saving and retrieving note data from a JSON file.
+To create an application that can be used to write, save, and delete and update employment file systems. This application uses an application called mySQL and filesystem inquirer.
 
-* This project included a develop folder which provided the frontend. This project will create the backend and establish a connection between both ends while hosting on local port 3000.
+
 
 # Demo Features:
 * The following image and gif shows the web application's appearance and functionality:
-![TakeNote](public/assets/takenotespic.png)
+  
+![Employ](assets/employpic.png)
+![Employ Schemas](assets/schema.png)
 
-![TakeNote gif](public/assets/TakeNoteapp.gif)
+![Employ gif](assets/employee-tracker.gif)
 
 # Live URL:
 <a href="">EmploymentDB Youtube Video</a>
 
-<a href="">EmploymentDB GitHub Repo</a>
+<a href="https://github.com/sjohn214/EmploymentDB.git">EmploymentDB GitHub Repo</a>
 
 # Summary
-* In this project we created a note taking application, deployed on Heroku while using an express server application. Installs included: package json and express server application.
+* In this project we created an application that will allow users to dynamically make changes to an employment database system.
 
 # Special Features:
-* 2 HTML pages
-  * Index.html
-  * Notes.html
-  
-* CSS elements 
-  * style.css
-  
-* 3 Javascript pages
+* 2 Javascript pages
 
   * employmentDBConnection.js
   
-![EmploymentDB connection]()
+![EmploymentDB connection](assets/connect.png)
 
   * index.js
 
-![EmploymentDB functions]()
-
-  * requireindex.js
-
-![EmploymentDB class]()
-
+![Index](assets/indexpic.png
+)
 # Special Features Continued:
-  * Node Express
+  * mySQL
   * Arrays with objects
   * Jquery language
-  * Routes for API and HTML
-  * API for notes that read db.json
-  * db.json for file storage
+  * Schemas file
+  * Seed file
   * Functions
-  * Installed npm package express
+  * Installed npm package mysql and inquirer
   * Installed package-json
 
 

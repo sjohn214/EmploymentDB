@@ -2,7 +2,8 @@
 const mysql = require('mysql');
 var util = require('util');
 
-// Connect to the ice_creamDB database using a localhost connection
+
+// Connect to the employment_DB database using a localhost connection
 const connection = mysql.createConnection({
   host: 'localhost',
 
@@ -18,11 +19,6 @@ const connection = mysql.createConnection({
   // Name of database
   database: 'employment_DB',
 });
-// connection.connect((err) => {
-//     if (err) throw err;
-//     console.log('connected as id ' + connection.threadId);
-//     connection.end();
-//   });
 connection.connect();
 connection.query = util.promisify(connection.query);
 module.exports = connection;
