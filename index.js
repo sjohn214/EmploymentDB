@@ -90,7 +90,7 @@ function start() {
         }
     ]);
     }
-    
+
     if(answer.choice === "Remove an Employee"){
         connection.query("SELECT * FROM employment_DB.employees").then(function(results){
             console.log(results);
@@ -117,7 +117,7 @@ function start() {
     ]);
 
     }
-    if(answer.choice === "Update Employee"){
+    if(answer.choice === "Update/Add Employee"){
         connection.query("SELECT * FROM employment_DB.employees").then(function(results){
             console.log(results);
         })
@@ -128,6 +128,14 @@ function start() {
             message: "Would you like to update an Employee file?",
             default: ["Yes", "No"]   
         },
+        inquirer.prompt([
+            {   
+            type: "input",
+            name: "addnew",
+            message: "Would you like to add a new Employee file?",
+            default: ["Yes", "No"]   
+        },
+    
             {
             type: "input",
             name: "roleid",
@@ -164,7 +172,7 @@ function start() {
             message: "What is the Employee's department id number?",
             default: ["Sales 1", "Engineering 2", "Finance 3", "Legal 4", "Human Resources 5"]
         }
-        
+    ])   
     ]);
     connection.query("UPDATE employees").then(function(results){
         console.log(results);
