@@ -1,5 +1,17 @@
 USE employment_DB;
 
+INSERT INTO all_employee_data(name, employee_id, first_name, last_name, title, salary, role_id, manager_id)
+VALUES
+    ("Engineering", 1, "Peyton", "Holmes", "Lead Engineer", 150000, 2, null),
+    ("Engineering", 2, "Jonathan", "Doerety", "Software Engineer", 125000, 2, 1),
+    ("Sales", 3, "Sally", "Watkins", "Sales Lead", 100000, 1, null),
+    ("Sales", 4, "Dominique", "Agnes", "Salesperson", 80000, 1, 3),
+    ("Sales", 9, "Corey", "Dunn", "Salesperson", 80000, 1, 3),
+    ("Finance", 5, "Samantha", "Cheney", "Accountant", 120000, 3, null),
+    ("Legal", 6, "Shannon", "Paige", "Managing Attorney", 230000, 4, null),
+    ("Legal", 7, "Daniel", "Sirees", "Lawyer", 190000, 4, 6),
+    ("Human Resources", 8, "Austin", "Jon", "HR Leader", 175000, 5, null);
+    
 INSERT INTO department (name) 
 VALUES 
     ("Sales"),
@@ -19,26 +31,18 @@ VALUES
     ("Lawyer", 190000, 4),
     ("Human Resource Leader", 175000, 5);
 
-INSERT INTO employees (first_name, last_name, employee_id, role_id, manager_id)
+
+INSERT INTO employees (department_id, first_name, last_name, employee_id, title, role_id, manager_id)
 VALUES
-    ("Peyton", "Holmes", 1, 2, null),
-    -- //Lead Engineer
-    ("Jonathan","Doerety", 2, 2, 1),
-    -- //Software Engineer
-    ("Sally", "Watkins", 3, 1, null), 
-    -- //Sales Leader
-    ("Dominique", "Agnes", 4, 1, 3),
-    -- //Salesperson
-    ("Samantha", "Cheney", 5, 3 ,null),
-    -- //Accountant
-    ("Shannon", "Paige", 6, 4, null),
-    -- //Managing Attorney
-    ("Daniel", "Sirees", 7, 4, 6),
-    -- //Lawyer
-    ("Austin", "Jon", 8, 5, null),
-    -- //HR Leader
-    ("Corey", "Dunn", 9, 1, 3);
-    -- //Salesperson
+    (2, "Peyton", "Holmes", 1,"Lead Engineer", 2, null),
+    (2, "Jonathan","Doerety", 2, "Software Engineer", 2, 1),
+    (1, "Sally", "Watkins", 3, "Sales Leader",  1, null), 
+    (1, "Dominique", "Agnes", 4, "Salesperson", 1, 3),
+    (3, "Samantha", "Cheney", 5, "Accountant", 3 ,null),
+    (4, "Shannon", "Paige", 6, "Managing Attorney", 4, null),
+    (4, "Daniel", "Sirees", 7, "Lawyer",  4, 6),
+    (5, "Austin", "Jon", 8, "HR Leader", 5, null),
+    (1, "Corey", "Dunn", 9, "Salesperson", 1, 3);
     
 INSERT INTO employee_departments(first_name, last_name, employee_id, department_id)
 VALUES 
@@ -63,18 +67,3 @@ VALUES
     ("Shannon", "Paige", null),
     ("Daniel", "Sirees",6),
     ("Austin", "Jon", null);
-
-
-INSERT INTO all_employee_data(name, employee_id, first_name, last_name, title, salary, role_id, manager_id)
-VALUES
-    ("Engineering", 1, "Peyton", "Holmes", "Lead Engineer", 150000, 2, null),
-    ("Engineering", 2, "Jonathan", "Doerety", "Software Engineer", 125000, 2, 1),
-    ("Sales", 3, "Sally", "Watkins", "Sales Lead", 100000, 1, null),
-    ("Sales", 4, "Dominique", "Agnes", "Salesperson", 80000, 1, 3),
-    ("Sales", 9, "Corey", "Dunn", "Salesperson", 80000, 1, 3),
-    ("Finance", 5, "Samantha", "Cheney", "Accountant", 120000, 3, null),
-    ("Legal", 6, "Shannon", "Paige", "Managing Attorney", 230000, 4, null),
-    ("Legal", 7, "Daniel", "Sirees", "Lawyer", 190000, 4, 6),
-    ("Human Resources", 8, "Austin", "Jon", "HR Leader", 175000, 5, null),
-
-
