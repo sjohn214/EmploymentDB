@@ -58,17 +58,6 @@ CREATE TABLE employee_managers(
     manager_id INT UNSIGNED
 );
 
-CREATE TABLE add_new_employees(
-	employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-     -- //employee's id number
-    first_name VARCHAR(30)NOT NULL,
-    last_name VARCHAR(30)NOT NULL,
-    title VARCHAR(30)NOT NULL,
-    role_id INT NOT NULL,
-    department_id INT NOT NULL,
-    manager_id INT UNSIGNED
-);
-
 DELETE FROM employees 
 WHERE (last_name = '' AND first_name = '');
 

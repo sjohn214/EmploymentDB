@@ -8,7 +8,7 @@ function start() {
     type: "list",
     name: "choice",
     message: "What would you like to do?",
-    choices: ["View all Employee Data", "View departments" , "View roles", "View employees", "View employees by Department", "View employees by Manager","Add an Employee", "Remove an Employee", "Update Employee", "Update Employee manager"],
+    choices: ["View all Employee Data", "View departments" , "View roles", "View employees", "View employees by Department", "View employees by Manager", "Remove an Employee", "Update/Add Employee", "Update Employee manager"],
 },
 ]).then(function(answer){
     console.log(answer);
@@ -90,68 +90,7 @@ function start() {
         }
     ]);
     }
-    if(answer.choice === "Add an Employee"){
-        connection.query("SELECT * FROM employment_DB.add_new_employees").then(function(results){
-            console.log(results);
-        })
-        inquirer.prompt([
-            {   
-            type: "input",
-            name: "newemployee",
-            message: "Would you like to add a new Employee?",
-            choices: ["Yes", "No"]   
-        },
-        {
-            type: "input",
-            name: "roleid",
-            message: "What is the Employee's role id?",
-            default: ["1", "2", "3", "4", "5"]  
-        },
-            {
-            type: "input",
-            name: "firstname",
-            message: "What is the Employee's first name?",
-                
-        },
-            {
-            type: "input",
-            name: "lastname",
-            message: "What is the Employee's last name?",
-            
-        },
-        {
-            type: "input",
-            name: "employeeid",
-            message: "What is the Employee's new id number? Use a number higher than 9.",
-        
-        },
-        {
-            type: "input",
-            name: "title",
-            message: "What is the Employee's title?",
-            default: ["Lead Engineer", "Software Engineer", "Sales Leader", "Salesperson", "Accountant", "Managing Attorney", "Lawyer", "HR Leader"]
-        },
-        {
-            type: "input",
-            name: "departmentid",
-            message: "What is the Employee's department id number?",
-            default: ["Sales 1", "Engineering 2", "Finance 3", "Legal 4", "Human Resources 5"]
-        }
-        
-    ]);
-    connection.query("INSERT INTO employees").then(function(results){
-        console.log(results);
-    })
-    inquirer.prompt([
-        {   
-        type: "list",
-        name: "choice",
-        message: "What would you like to do?",
-        choices: ["View all Employee Data", "View departments" , "View roles", "View employees", "View employees by Department", "View employees by Manager","Add an Employee", "Remove an Employee", "Update Employee", "Update Employee manager"],
-    }
-    ]);
-
-    }
+    
     if(answer.choice === "Remove an Employee"){
         connection.query("SELECT * FROM employment_DB.employees").then(function(results){
             console.log(results);
