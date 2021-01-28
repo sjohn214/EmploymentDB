@@ -32,17 +32,17 @@ VALUES
     ("Human Resource Leader", 175000, 5);
 
 
-INSERT INTO employees (department_id, first_name, last_name, employee_id, title, role_id, manager_id)
+INSERT INTO employees (department_id, first_name, last_name, title, role_id, manager_id)
 VALUES
-    (2, "Peyton", "Holmes", 1,"Lead Engineer", 2, null),
-    (2, "Jonathan","Doerety", 2, "Software Engineer", 2, 1),
-    (1, "Sally", "Watkins", 3, "Sales Leader",  1, null), 
-    (1, "Dominique", "Agnes", 4, "Salesperson", 1, 3),
-    (3, "Samantha", "Cheney", 5, "Accountant", 3 ,null),
-    (4, "Shannon", "Paige", 6, "Managing Attorney", 4, null),
-    (4, "Daniel", "Sirees", 7, "Lawyer",  4, 6),
-    (5, "Austin", "Jon", 8, "HR Leader", 5, null),
-    (1, "Corey", "Dunn", 9, "Salesperson", 1, 3);
+    (2, "Peyton", "Holmes", "Lead Engineer", 2, null),
+    (2, "Jonathan","Doerety", "Software Engineer", 2, 1),
+    (1, "Sally", "Watkins", "Sales Leader",  1, null), 
+    (1, "Dominique", "Agnes", "Salesperson", 1, 3),
+    (3, "Samantha", "Cheney", "Accountant", 3 ,null),
+    (4, "Shannon", "Paige", "Managing Attorney", 4, null),
+    (4, "Daniel", "Sirees", "Lawyer",  4, 6),
+    (5, "Austin", "Jon", "HR Leader", 5, null),
+    (1, "Corey", "Dunn", "Salesperson", 1, 3);
     
 INSERT INTO employee_departments(first_name, last_name, employee_id, department_id)
 VALUES 
@@ -67,3 +67,19 @@ VALUES
     ("Shannon", "Paige", null),
     ("Daniel", "Sirees",6),
     ("Austin", "Jon", null);
+
+DELETE FROM employees 
+WHERE (last_name = '' AND first_name = '');
+
+UPDATE employees
+SET role_id = '' WHERE last_name = '' AND first_name = '' AND employee_id = ''
+AND title = '' AND department_id = '';
+
+UPDATE employee_managers
+SET manager_id = '' WHERE last_name = '' AND first_name = '';
+
+INSERT INTO add_employees(last_name, first_name, role_id, title, department_id)
+VALUES
+('Heartwell','Chistoff', 2, 'Software Engineer',2),
+('Jordan', 'Michaela', 1, 'Salesperson', 3),
+('Barthwell','Lordes', 1, 'Salesperson',3);

@@ -1,13 +1,15 @@
 var connection = require("./db/employmentDBConnection.js");
 var inquirer = require("inquirer");
+var mysql = require("mysql");
 
 
 function start() {
-    inquirer.prompt([{
+    inquirer.prompt([
+    {
         type: "list",
         name: "choice",
         message: "What would you like to do?",
-        choices: ["View all Employee Data", "View departments", "View roles", "View employees", "View employees by Department", "View employees by Manager", "Remove an Employee", "Update/Add Employee", "Update Employee manager"],
+        choices: ["View all Employee Data", "View departments", "View roles", "View employees", "View employees by Department", "View employees by Manager", "Remove an Employee", "Update Employee", "Update Employee manager", "Add Employee"],
     }, ]).then(function (answer) {
         console.log(answer);
         if (answer.choice === "View all Employee Data") {
@@ -32,8 +34,8 @@ function start() {
                 start();
             })
         } else if (answer.choice === "View employees by Department") {
-            connection.query("SELECT * FROM employment_DB.employee_departments").then(function (response) {
-                console.log(response);
+            connection.query("SELECT * FROM employment_DB.employee_departments").then(function (results) {
+                console.log(results);
                 start();
             })
         } else if (answer.choice === "View employees by Manager") {
@@ -41,49 +43,70 @@ function start() {
                 console.log(results);
                 start();
             })
-        } else if (answer.choice === "Update/Add Employee") {
+        } else if (answer.choice === "Update Employee") {
             connection.query("SELECT * FROM employment_DB.employees").then(function (results) {
                 console.log(results);
                 updateEmployee();
-                connection.query("UPDATE employees").then(function (results) {
+                connection.query("UPDATE employees SET manager_id = ? WHERE last_name = ? AND first_name = ?").then(function (results) {
                     console.log(results)
                 start();
                 });
             })
-        }else if (answer.choice === "Remove an Employee") {
-            connection.query("SELECT * FROM employment_DB.employees").then(function (results) {
+        // }else if (answer.choice === "Remove an Employee") {
+        //     connection.query("SELECT * FROM employment_DB.employees").then(function (results) {
+        //         console.log(results);
+        //         removeEmployee();
+        //         connection.query("DELETE FROM employees WHERE last_name = ? AND first_name = ? AND").then(function (results) {
+        //             console.log(results);
+        //         start();
+        //         })
+        //     }) STILL WORKING ON THIS
+        // }else if (answer.choice === "Update Employee manager") {
+        //     connection.query("SELECT * FROM employment_DB.employee_managers").then(function (results) {
+        //         console.log(results);
+        //         updateEmManager();
+        //         connection.query("UPDATE employee_managers SET manager_id = ? WHERE last_name = ? AND first_name = ?").then(function (results) {
+        //             console.log(results);
+        //         start();
+        //         })
+        //     }) STILL WORKING ON THIS
+            
+        // }else if (answer.choice === "Add Employee"){
+            connection.query("SELECT * FROM employment_DB.add_employees").then(function (results) {
                 console.log(results);
-                connection.query("DELETE FROM employees WHERE last_name = ? AND first_name = ? AND").then(function (results) {
-                    console.log(results);
+                addEmployee();
+                // connection.query(function (results) {
+                //     console.log(results);
+                //     var sql = "INSERT INTO add_employees(role_id, last_name, first_name, title, department_id) VALUES ?";
+                //     var values = [
+                //         ['Heartwell','Chistoff', 2, 'Software Engineer',2],
+                //         ['Jordan', 'Michaela', 2, 'Salesperson', 3],
+                //         ['Barthwell','Lordes', 1, 'Salesperson',3]
+                //     ];
+                // connection.query(sql,[values],function (results) {
+                //     console.log(results);
+                // })
                 start();
-                })
+                // }) STILL WORKING ON THIS/////////////////////////////
             })
-        }else if (answer.choice === "Update Employee manager") {
-            connection.query("SELECT * FROM employment_DB.employee_managers").then(function (results) {
-                console.log(results);
-            })
-            connection.query("UPDATE employees_managers SET manager_id = ? WHERE last_name = ? AND first_name = ?",).then(function (results) {
-                console.log(results);
-            })
-        } 
+        
+        }else if (answer.choice === "EXIT") {
+            connection.end();
+            return
+        }
     });
+}start();
 
-}
 
+// Prompts and function for update Employees//
 function updateEmployee() {
 
-    inquirer.prompt([{
-            type: "input",
-            name: "update",
-            message: "Would you like to update an Employee file?",
-            default: ["Yes", "No"]
-        },
-
+    inquirer.prompt([
         {
-            type: "input",
+            type: "list",
             name: "roleid",
             message: "What is the Employee's role id?",
-            default: ["1", "2", "3", "4", "5"]
+            choices: ["1", "2", "3", "4", "5"]
         },
         {
             type: "input",
@@ -98,95 +121,79 @@ function updateEmployee() {
 
         },
         {
-            type: "input",
+            type: "list",
             name: "employeeid",
             message: "What is the Employee's current id number?",
-            default: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+            choices: ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
         },
         {
-            type: "input",
+            type: "list",
             name: "title",
             message: "What is the Employee's title?",
-            default: ["Lead Engineer", "Software Engineer", "Sales Leader", "Salesperson", "Accountant", "Managing Attorney", "Lawyer", "HR Leader"]
+            choices: ["Lead Engineer", "Software Engineer", "Sales Leader", "Salesperson", "Accountant", "Managing Attorney", "Lawyer", "HR Leader"]
         },
         {
-            type: "input",
+            type: "list",
             name: "departmentid",
             message: "What is the Employee's department id number?",
-            default: ["Sales 1", "Engineering 2", "Finance 3", "Legal 4", "Human Resources 5"]
+            choices: ["Sales 1", "Engineering 2", "Finance 3", "Legal 4", "Human Resources 5"]
         }
     ]);
-}
-
-inquirer.prompt([{
-    type: "list",
-    name: "choice",
-    message: "What would you like to do?",
-    choices: ["View all Employee Data", "View departments", "View roles", "View employees", "View employees by Department", "View employees by Manager", "Remove an Employee", "Update/Add Employee", "Update Employee manager"],
-}]);
+};
 
 
-    inquirer.prompt([{
+// Prompts and function for Remove Employee//
+function removeEmployee() {
+    inquirer.prompt([
+    {
+        type: "input",
+        name: "lastname",
+        message: "What is the Employee's last name?",
+
+    },
+    {
+        type: "input",
+        name: "firstname",
+        message: "What is the Employee's first name?",
+
+    }
+]);
+};
+
+// Prompts and function for Update Employee Manager//
+function updateEmManager() {
+    inquirer.prompt([
+    {
         type: "list",
-        name: "choice",
-        message: "What would you like to do?",
-        choices: ["View all Employee Data", "View departments", "View roles", "View employees", "View employees by Department", "View employees by Manager", "Remove an Employee", "Update/Add Employee", "Update Employee manager"],
-    }]);
+        name: "managerID",
+        message: "What is the Employee's manager ID?",
+        choices: ["Lead Engineer 1", "Sales Lead 3", "Managing Attorney 6"]
+    },
+    {
+        type: "input",
+        name: "lastname",
+        message: "What is the Employee's last name?",
 
-if (answer.choice === "Update/Add Employee") {
-    connection.query("SELECT * FROM employment_DB.employees").then(function (results) {
-        console.log(results);
-    })
-    inquirer.prompt([{
-            type: "input",
-            name: "addnew",
-            message: "Would you like to add a new Employee file?",
-            default: ["Yes", "No"]
-        },
+    },
+    {
+        type: "input",
+        name: "firstname",
+        message: "What is the Employee's first name?",
+
+    }
+]);
+};
+
+
+// Prompts and function for Add Employee//
+function addEmployee() {
+    
+    inquirer.prompt([
         {
-            type: "input",
+            type: "list",
             name: "roleid",
             message: "What is the Employee's role id?",
-            default: ["1", "2", "3", "4", "5"]
-        },
-        {
-            type: "input",
-            name: "firstname",
-            message: "What is the Employee's first name?",
-
-        },
-        {
-            type: "input",
-            name: "lastname",
-            message: "What is the Employee's last name?",
-
-        },
-        {
-            type: "input",
-            name: "employeeid",
-            message: "What is the Employee's new id number? Select a number higher than 9.",
-
-        },
-        {
-            type: "input",
-            name: "title",
-            message: "What is the Employee's title?",
-            default: ["Lead Engineer", "Software Engineer", "Sales Leader", "Salesperson", "Accountant", "Managing Attorney", "Lawyer", "HR Leader"]
-        },
-        {
-            type: "input",
-            name: "departmentid",
-            message: "What is the Employee's department id number?",
-            default: ["Sales 1", "Engineering 2", "Finance 3", "Legal 4", "Human Resources 5"]
+            choices: ["Heartwell, Chistoff 2 Software Engineer 2", "Jordan, Michaela 1 Salesperson 3", "Barthwell, Lordes 1 Salesperson 3"]
         }
-    ])
-}
-connection.query("UPDATE employees").then(function (results) {
-    console.log(results);
-});
-
-if (answer.choice === "EXIT") {
-    connection.end();
-    return
-}
-start();
+    ]);
+};

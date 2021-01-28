@@ -27,6 +27,7 @@ CREATE TABLE department(
 );
 
 CREATE TABLE roles(
+	role_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30)NOT NULL,
     salary DECIMAL(10,2)NOT NULL,
     department_id INT NOT NULL,
@@ -44,6 +45,16 @@ CREATE TABLE employees(
     manager_id INT UNSIGNED
 );
 
+CREATE TABLE add_employees(
+    employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    -- //new employee id number//
+    first_name VARCHAR(30)NOT NULL,
+    last_name VARCHAR(30)NOT NULL,
+    role_id INT NOT NULL,
+    title VARCHAR(30)NOT NULL,
+    department_id INT NOT NULL
+);
+
 CREATE TABLE employee_departments(
 	employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
      -- //employee's id number
@@ -58,15 +69,4 @@ CREATE TABLE employee_managers(
     manager_id INT UNSIGNED
 );
 
-DELETE FROM employees 
-WHERE (last_name = '' AND first_name = '');
 
-UPDATE employees
-SET role_id = '' WHERE last_name = '' AND first_name = '' AND employee_id = ''
-AND title = '' AND department_id = '';
-
-INSERT INTO employees(last_name, first_name, employee_id, role_id, title, department_id)
-Values('', '', INT(), INT(), '', INT());
-
-UPDATE employee_managers
-SET manager_id = '' WHERE last_name = '' AND first_name = '';
