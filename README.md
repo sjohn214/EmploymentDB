@@ -9,8 +9,11 @@ To create an application that can be used to write, save, and delete and update 
 # Demo Features:
 * The following image and gif shows the web application's appearance and functionality:
   
-![Employ](assets/employpic.png)
-![Employ Schemas](assets/schema.png)
+![all data table](assets/allEmDatatable.png)
+
+![by department](assets/byDepartmentsTable.png)
+
+![Add Employee table](assets/newEmtable.png)
 
 ![Employ gif](assets/employee-tracker.gif)
 
@@ -38,6 +41,10 @@ To create an application that can be used to write, save, and delete and update 
   * Arrays with objects
   * Jquery language
   * Schemas file
+
+![Employ Schemas](assets/schema.png)
+![Output Schemas](assets/schemaOutput.png)
+
   * Seed file
   * Functions
   * Installed npm package mysql and inquirer
