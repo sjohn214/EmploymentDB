@@ -18,7 +18,7 @@ To create an application that can be used to write, save, and delete and update 
 ![Employ gif](assets/employee-tracker.gif)
 
 # Live URL:
-<a href="">EmploymentDB Youtube Video</a>
+<a href="https://youtu.be/wI8kryj1rTM">EmploymentDB Youtube Video</a>
 
 <a href="https://github.com/sjohn214/EmploymentDB.git">EmploymentDB GitHub Repo</a>
 
